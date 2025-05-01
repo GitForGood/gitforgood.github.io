@@ -162,6 +162,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="range"]:hover{
+    transition: background-color 300ms;
     background-color: var(--nixie-bright);
 }
 
