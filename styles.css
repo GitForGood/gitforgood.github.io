@@ -1,36 +1,201 @@
-body {
-    background-color: #0a0a0a;
-    color: #f5f5f5;
-    font-family: 'Courier New', monospace;
-    padding: 2rem;
-    margin: 0;
+/* Color variables */
+:root {
+    --background-color: #0a0a0a;
+    --text-color: #b8b8b8;
+    --nixie-dim: rgba(255, 170, 120, 0.62);
+    --nixie-background: rgba(255, 170, 120, 0.12);  
+    --nixie-bright: #ffa347;
+    --grid-line-color: rgba(255, 140, 90, 0.62);
 }
 
-/* Container for demo purposes */
-.container {
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+    margin: 0 6vw;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
 }
 
-/* Nixie tube container styling */
-.nixie-link {
+/* Grid lines - using pseudo-elements for both vertical and horizontal */
+/* Vertical lines */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100vh;
+    background: var(--nixie-bright);
+    box-shadow: 
+        0 0 3px var(--grid-line-color),
+        0 0 5px var(--grid-line-color);
+    animation: nixie-glow 3s infinite alternate;
+    z-index: 1;
+}
+
+/* Left vertical line */
+body::before {
+    left: 6vw;
+}
+
+/* Right vertical line */
+body::after {
+    right: 6vw;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Doest not handle whitespace correctly */
+header nav {
     position: relative;
     font-family: 'Courier New', monospace;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 0.1em;
-    color: rgba(255, 170, 120, 0.6); /* Dim orange-amber when dormant */
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    a{
+        margin: max(2vw, 1rem);
+    }
+}
+
+a{
+    letter-spacing: 0.2rem;
+    color: var(--nixie-dim);
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+}
+
+.value-display-field {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    min-width: max(12rem, 20vw);
+    max-width: min(24rem, 20vw);
+    padding: 0.5rem 0.5rem;
+    font-size: 2rem;
+    color: var(--nixie-bright);
+    background: none;
+    border: none;
+    border-top: 0.125rem solid var(--grid-line-color);
+    * {
+        padding: 0;
+        margin: 0;
+    }
+  }
+  
+.value-display-field::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0.125rem;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--grid-line-color), transparent, transparent);
+    pointer-events: none;
+}
+
+/*
+.progress-container {
+    margin-top: 20px;
+    font-size: 24px;
+    letter-spacing: 0.125rem;
+    color: var(--nixie-bright);
+    line-height: 1;
+    white-space: pre;
+    height: 28px;
+    border-color: var(--nixie-bright);
+    border-style: solid;
+    padding: 0.25rem;
+    padding-top: 0.5rem;
+    border-width: 0.125rem;
+}
+*/
+.progress-container {
+    margin-top: min(1vh, 1rem);
+    font-size: min(3vw, 3rem);
+    letter-spacing: min(0.25vw,0.25rem);
+    color: var(--nixie-dim);
+    white-space: pre;
+    border-color: var(--nixie-bright);
+    border-style: solid;
+    padding: min(1vh, 1rem);
+    padding-top: min(1.25vh, 1.25rem);
+    border-width: min(0.5vh, 1.25rem);
+    
+    /* Using vw for width (80% of viewport) */
+    width: min(68vw, 68rem);
+    /* Or using clamp for width to set min/max limits */
+    /* width: clamp(300px, 80vw, 1200px); */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.progress-bar-controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 10rem;
+}
+
+
+.button-toggle,
+.tab button {
+    position: relative;
+    font-family: 'Courier New', monospace;
+    background: none;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--nixie-dim); /* Dim orange-amber when dormant */
+    text-decoration: none;
+    padding: 0.25rem 1.5rem 0.25rem 1.6rem;
     display: inline-block;
+    border-width: 0.125rem;
+    border-color: transparent;
+    cursor: pointer;
+}
+.button-toggle,
+.tab button:hover{
+    border-style: solid; 
+    border-color: var(--nixie-background);
+}
+.button-toggle.active,
+.tab button.active{
+    border-style: solid;
+    background-color: var(--nixie-background);
+    border-color: var(--nixie-bright);
 }
 
 /* Make each character an independent element */
-.nixie-link span {
+.active span,
+.nixie-animated span {
     display: inline-block;
     position: relative;
     transition: all 0.3s ease;
@@ -40,8 +205,9 @@ body {
 }
 
 /* Base hover style for the link */
-.nixie-link:hover span {
-    color: #ffa347; /* Brighter, more saturated orange when active */
+.active span,
+.nixie-animated:hover span {
+    color: var(--nixie-bright); /* Brighter, more saturated orange when active */
     text-shadow: 
         0 0 1px rgba(255, 180, 130, 1),
         0 0 2px rgba(255, 160, 110, 0.9),
@@ -50,64 +216,79 @@ body {
         0 0 7px rgba(255, 100, 50, 0.4);
 }
 
+.nixie-animated.progress-container{
+    animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
+}
+
 /* Individual animation delays for each letter */
-.nixie-link:hover span:nth-child(1) {
+.active span:nth-child(1),
+.nixie-animated:hover span:nth-child(1) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.1s, -0.05s;
 }
 
-.nixie-link:hover span:nth-child(2) {
+.active span:nth-child(2),
+.nixie-animated:hover span:nth-child(2) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.3s, -0.25s;
 }
 
-.nixie-link:hover span:nth-child(3) {
+.active span:nth-child(3),
+.nixie-animated:hover span:nth-child(3) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.5s, -0.1s;
 }
 
-.nixie-link:hover span:nth-child(4) {
+.active span:nth-child(4),
+.nixie-animated:hover span:nth-child(4) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.2s, -0.4s;
 }
 
-.nixie-link:hover span:nth-child(5) {
+.active span:nth-child(5),
+.nixie-animated:hover span:nth-child(5) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.7s, -0.15s;
 }
 
-.nixie-link:hover span:nth-child(6) {
+.active span:nth-child(6),
+.nixie-animated:hover span:nth-child(6) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.1s, -0.35s;
 }
 
-.nixie-link:hover span:nth-child(7) {
+.active span:nth-child(7),
+.nixie-animated:hover span:nth-child(7) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.4s, -0.2s;
 }
 
-.nixie-link:hover span:nth-child(8) {
+.active span:nth-child(8),
+.nixie-animated:hover span:nth-child(8) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.6s, -0.45s;
 }
 
-.nixie-link:hover span:nth-child(9) {
+.active span:nth-child(9),
+.nixie-animated:hover span:nth-child(9) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.35s, -0.05s;
 }
 
-.nixie-link:hover span:nth-child(10) {
+.active span:nth-child(10),
+.nixie-animated:hover span:nth-child(10) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.2s, -0.3s;
 }
 
-/* For longer text, continue the pattern with different delays */
-.nixie-link:hover span:nth-child(11) {
+.active span:nth-child(11),
+.nixie-animated:hover span:nth-child(11) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.5s, -0.1s;
 }
 
-.nixie-link:hover span:nth-child(12) {
+.active span:nth-child(12),
+.nixie-animated:hover span:nth-child(12) {
     animation: nixie-glow 1.5s infinite alternate, nixie-flicker 0.8s infinite steps(1);
     animation-delay: -0.3s, -0.4s;
 }
@@ -214,7 +395,7 @@ body {
 /* Create the warm glow animation with enhanced brightness and range */
 @keyframes nixie-glow {
     0% {
-        color: #ffa347; /* Brighter orange */
+        color: var(--nixie-bright); /* Brighter orange */
         text-shadow: 
             0 0 1px rgba(255, 180, 130, 1),
             0 0 2px rgba(255, 160, 110, 0.9),
@@ -251,8 +432,22 @@ body {
     }
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #888;
+@media (max-width: 768px) {
+    
+    body::before {
+        left: 10px;
+    }
+    
+    body::after {
+        right: 10px;
+    }
+
+    header nav {
+        flex-direction: column;
+    }
+    .grid{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 1rem;
+    }
 }

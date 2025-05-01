@@ -8,17 +8,87 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <header class="header">
+        <nav class="nav-links">
+            <a href="#main" class="nixie-animated" id="link1">HOME</a>
+            <a href="https://gitforgood.github.io/gitforgood-github.io/" class="nixie-animated" id="link4">PORTFOLIO</a>
+            <a href="mailto:oliversofta@gmail.com" class="nixie-animated" id="link3">CONTACT</a>
+        </nav>
+    </header>
+    
+    <main id="#main">
+        <section>
             <h1>Nixie Tube Text Effect</h1>
-            <p>Hover over the links below to see the per-letter effect</p>
-        </div>
-        
-        <a href="#" class="nixie-link" id="link1">HOME</a>
-        <a href="#" class="nixie-link" id="link2">ABOUT</a>
-        <a href="#" class="nixie-link" id="link3">CONTACT</a>
-        <a href="#" class="nixie-link" id="link4">PORTFOLIO</a>
-    </div>
+            <p>Hover over the links below to see the effect</p>
+        </section>
+        <section>
+            <h2>Tab demo</h2>
+            <p>A small demo of how tabs can be implemented</p>
+            <div class="tab">
+                <button id="defaultOpen" class="tab-link nixie-animated" onclick="openTab(event, 'FOO')">FIRST</button>
+                <button class="tab-link nixie-animated" onclick="openTab(event, 'BAR')">SECOND</button>
+                <button class="tab-link nixie-animated" onclick="openTab(event, 'BAZ')">THIRD</button>
+            </div>
+            <div id="FOO" class="tab-content">
+                <h3>FOO</h3>
+                <p>lorem ipsum or whatever</p>
+            </div>
+            <div id="BAR" class="tab-content">
+                <h3>BAR</h3>
+                <p>Hippity hoppity</p>
+            </div>
+            <div id="BAZ" class="tab-content">
+                <h3>BAZ</h3>
+                <a href="https://soundcloud.com/skurk-skd" class="nixie-animated">SHOUTOUT</a>
+            </div>
+        </section>
+        <section>
+            <h2>Unicode Progress Bar</h2>
+            <p>Responsive to screen size</p>
+            <div class="progress-container nixie-animated" id="progress-bar"></div>
+            
+            <div class="progress-bar-controls">
+                <button id="toggle-btn" class="nixie-animated button-toggle active">ACTIVE</button>
+                <div class="speed-control">
+                    <label for="speed">Animation Speed:</label>
+                    <input type="range" id="speed" min="10" max="500" value="100">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Value display fields</h2>
+            <div class="grid">
+                <div class="value-display-field">
+                    <p>✇</p>
+                    <p>14.7µφ</p>
+                </div>
+                <div class="value-display-field">
+                    <p>⚤</p>
+                    <p>MALE</p>
+                </div>
+                <div class="value-display-field">
+                    <p>ඞ</p>
+                    <p>SUS</p>
+                </div>
+                <div class="value-display-field">
+                    <p>✦</p>
+                    <p>HEAVY</p>
+                </div>
+                <div class="value-display-field">
+                    <p>ⓘ</p>
+                    <p>NULL</p>
+                </div>
+                <div class="value-display-field">
+                    <p>⛏</p>
+                    <p>Y=11</p>
+                </div>
+            </div>
+        </section>
 
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nixie Tube Design</p>
+    </footer>
 </body>
 </html>
