@@ -82,8 +82,10 @@ function toggleAnimation() {
     if (config.running) {
         clearInterval(config.interval);
         toggleBtn.classList.remove("active")
+        progressBarEl.classList.remove("nixie-animated")
     } else {
         startAnimation();
+        progressBarEl.classList.add("nixie-animated")
         toggleBtn.classList.add("active")
     }
     config.running = !config.running;
@@ -101,7 +103,15 @@ function changeSpeed() {
 // Event listeners
 toggleBtn.addEventListener('click', toggleAnimation);
 speedControl.addEventListener('input', changeSpeed);
-
+speedControl.addEventListener('input', function() {
+    const min = parseInt(this.min);
+    const max = parseInt(this.max);
+    const val = parseInt(this.value);
+    const percent = ((val - min) / (max - min)) * 100;
+    
+    // Update the CSS variable
+    this.style.setProperty('--percent', percent + '%');
+});
 // Initialize
 updateProgressBar();
 startAnimation();
