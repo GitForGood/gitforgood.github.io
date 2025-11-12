@@ -1,23 +1,89 @@
-import { Button } from 'actify'
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
+import { NavigationButton } from './components/NavigationButton'
+import { Home } from './pages/Home'
+import { Projects } from './pages/Projects'
+import { About } from './pages/About'
+import { Contact } from './pages/Contact'
+
+const navigation_items = [
+  {
+    label: 'Home',
+    icon: 'home',
+    path: '/'
+  },
+  {
+    label: 'Projects',
+    icon: 'bookmarks',
+    path: '/projects'
+  },
+  {
+    label: 'About',
+    icon: 'person',
+    path: '/about'
+  },
+  {
+    label: 'Contact',
+    icon: 'mail',
+    path: '/contact'
+  }
+]
+
+function AppContent() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  // Update active index based on current path
+  useEffect(() => {
+    const currentIndex = navigation_items.findIndex(item => item.path === location.pathname)
+    if (currentIndex !== -1) {
+      setActiveIndex(currentIndex)
+    }
+  }, [location.pathname])
+
+  const handleNavigation = (path: string, index: number) => {
+    navigate(path, { replace: false })
+    setActiveIndex(index)
+  }
+
+  return (
+    <div className="h-screen bg-background flex flex-col">
+      <Header />
+      <div className="flex flex-1 overflow-hidden">
+        <nav className="h-full bg-surface-container border-r border-outline-variant flex flex-col py-4 gap-2">
+          {navigation_items.map((item, index) => (
+            <NavigationButton
+              key={item.path}
+              label={item.label}
+              icon={item.icon}
+              isActive={activeIndex === index}
+              onClick={() => handleNavigation(item.path, index)}
+            />
+          ))}
+        </nav>
+        <main className="flex-1 overflow-y-auto">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </div>
+      <Footer />
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-surface p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 text-on-surface">Portfolio</h1>
-        <p className="text-lg mb-6 text-on-surface-variant">
-          Welcome to your Vite + React + Actify project with Material Design 3!
-        </p>
-
-        <div className="flex gap-4">
-          <Button variant="filled">Filled Button</Button>
-          <Button variant="outlined">Outlined Button</Button>
-          <Button variant="elevated">Elevated Button</Button>
-          <Button variant="tonal">Tonal Button</Button>
-        </div>
-      </div>
-    </div>
+    <Router basename="/portfolio/">
+      <AppContent />
+    </Router>
   )
 }
 
