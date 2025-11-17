@@ -54,7 +54,8 @@ function AppContent() {
     <div className="h-screen bg-background flex flex-col">
       <Header />
       <div className="flex flex-1 overflow-hidden">
-        <nav className="h-full bg-surface-container border-r border-outline-variant flex flex-col py-4 gap-2">
+        {/* Desktop Side Navigation Rail - hidden on mobile */}
+        <nav className="hidden md:flex h-full bg-surface-container border-r border-outline-variant flex-col py-4 gap-2">
           {navigation_items.map((item, index) => (
             <NavigationButton
               key={item.path}
@@ -74,7 +75,23 @@ function AppContent() {
           </Routes>
         </main>
       </div>
-      <Footer />
+      {/* Mobile Bottom Navigation Bar - hidden on desktop */}
+      <nav className="flex md:hidden bg-surface-container border-t border-outline-variant px-2 py-2 justify-around gap-2">
+        {navigation_items.map((item, index) => (
+          <NavigationButton
+            key={item.path}
+            label={item.label}
+            icon={item.icon}
+            isActive={activeIndex === index}
+            onClick={() => handleNavigation(item.path, index)}
+            variant="bottom"
+          />
+        ))}
+      </nav>
+      {/* Footer - hidden on mobile */}
+      <div className="hidden md:block">
+        <Footer />
+      </div>
     </div>
   )
 }

@@ -1,10 +1,10 @@
 /* Custom styles for the app */
 :root,:host{
-    --md-sys-color-background:#1b110a;
+    --md-sys-color-background:#0f0a05;
     --md-sys-color-on-background:#f3dfd1;
-    --md-sys-color-surface:#1b110a;
-    --md-sys-color-surface-dim:#1b110a;
-    --md-sys-color-surface-bright:#43372e;
+    --md-sys-color-surface:#0f0a05;
+    --md-sys-color-surface-dim:#0c0804;
+    --md-sys-color-surface-bright:#201b16;
     --md-sys-color-surface-container-lowest:#150c06;
     --md-sys-color-surface-container-low:#241912;
     --md-sys-color-surface-container:#281d15;
@@ -36,8 +36,8 @@
 
     --md-sys-color-tertiary:#c2d02e;
     --md-sys-color-on-tertiary:#2f3300;
-    --md-sys-color-tertiary-container:#a5b200
-    ;--md-sys-color-on-tertiary-container:#3c4200;
+    --md-sys-color-tertiary-container:#a5b200;
+    --md-sys-color-on-tertiary-container:#3c4200;
     --md-sys-color-error:#ffb4ab;
     --md-sys-color-on-error:#690005;
     --md-sys-color-error-container:#93000a;

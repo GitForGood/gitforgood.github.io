@@ -1,4 +1,4 @@
-import { Button, TextField } from 'actify'
+import { Button, IconButton, TextField } from 'actify'
 import { useState } from 'react'
 
 export function Contact() {
@@ -24,7 +24,7 @@ export function Contact() {
 
   return (
     <div className="p-8">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-on-surface">Get in Touch</h1>
         <p className="text-lg mb-8 text-on-surface-variant">
           Have a question or want to work together? Feel free to reach out!
@@ -77,19 +77,21 @@ export function Contact() {
 
         {rejectionMessage && (
           <div className="bg-error-container border border-error p-6 rounded-lg mb-8 relative">
-            <button
+            <IconButton
               onClick={() => setRejectionMessage('')}
-              className="absolute top-2 right-2 text-on-error-container hover:text-error transition-colors"
               aria-label="Close"
             >
               <span className="material-symbols-outlined">close</span>
-            </button>
+            </IconButton>
             <h3 className="text-xl font-semibold mb-2 text-on-error-container">
-              Response Received
+              Sorry, I can't send a message. Please send an email instead.
             </h3>
             <p className="text-on-error-container text-lg">
               {rejectionMessage}
             </p>
+            <Button variant='outlined'>
+              Send email
+            </Button>
           </div>
         )}
 
