@@ -8,6 +8,10 @@ import { Home } from './pages/Home'
 import { Projects } from './pages/Projects'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
+import { InventoryManager } from './pages/products/InventoryManager'
+import { PipelinePlanner } from './pages/products/PipelinePlanner'
+import { Shrinkflation } from './pages/products/Shrinkflation'
+import { Debattnytt } from './pages/products/Debattnytt'
 
 const navigation_items = [
   {
@@ -66,10 +70,14 @@ function AppContent() {
             />
           ))}
         </nav>
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto max-w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/inventory-manager" element={<InventoryManager />} />
+            <Route path="/projects/debattnytt" element={<Debattnytt />} />
+            <Route path="/projects/pipeline-planner" element={<PipelinePlanner />} />
+            <Route path="/projects/shrinkflation" element={<Shrinkflation />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

@@ -27,7 +27,7 @@ export function About() {
           <h2 className="text-2xl font-semibold mb-4 text-on-surface">Skills & Technologies</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {skills.map((skillGroup, index) => (
-              <div key={index} className="bg-surface-container p-6 rounded-lg">
+              <div key={index} className="bg-surface-container p-4 lg:p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-3 text-primary">
                   {skillGroup.category}
                 </h3>
@@ -43,7 +43,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="bg-surface-container p-6 rounded-lg">
+        <div className="bg-surface-container p-4 lg:p-6 rounded-lg">
           <h2 className="text-2xl font-semibold mb-4 text-on-surface">Experience</h2>
           <div className="space-y-4">
             <div>

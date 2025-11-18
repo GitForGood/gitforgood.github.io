@@ -1,4 +1,4 @@
-import { Button, IconButton, TextField } from 'actify'
+import { Button, IconButton, TextField, SnackbarProvider } from 'actify'
 import { useState } from 'react'
 
 export function Contact() {
@@ -24,13 +24,13 @@ export function Contact() {
 
   return (
     <div className="p-8">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-4 text-on-surface">Get in Touch</h1>
         <p className="text-lg mb-8 text-on-surface-variant">
           Have a question or want to work together? Feel free to reach out!
         </p>
 
-        <div className="bg-surface-container p-8 rounded-lg mb-8">
+        <div className="bg-surface-container p-4 lg:p-6 rounded-lg mb-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <TextField
@@ -76,41 +76,65 @@ export function Contact() {
         </div>
 
         {rejectionMessage && (
-          <div className="bg-error-container border border-error p-6 rounded-lg mb-8 relative">
-            <IconButton
-              onClick={() => setRejectionMessage('')}
-              aria-label="Close"
-            >
-              <span className="material-symbols-outlined">close</span>
-            </IconButton>
-            <h3 className="text-xl font-semibold mb-2 text-on-error-container">
-              Sorry, I can't send a message. Please send an email instead.
-            </h3>
+          <div className="bg-error-container border border-error p-4 lg:p-6 rounded-lg mb-8 relative">
+            <div className="flex flex-row justify-between">
+              <h3 className="text-xl font-semibold mb-2 text-on-error-container">
+                No can do.
+              </h3>
+              <IconButton
+                onClick={() => setRejectionMessage('')}
+                aria-label="Close"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </IconButton>
+            </div>
             <p className="text-on-error-container text-lg">
               {rejectionMessage}
             </p>
-            <Button variant='outlined'>
-              Send email
-            </Button>
           </div>
         )}
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="bg-surface-container p-6 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2 text-on-surface">Email</h2>
-            <p className="text-on-surface-variant">your.email@example.com</p>
-          </div>
+        <div
+        className="p-4 lg:p-6 rounded-lg bg-surface-container">
+          <h2 className="text-xl font-semibold mb-4 text-on-surface">External Links</h2>
+          <div className='flex flex-wrap gap-2'>
+            <Button
+              variant="outlined"
+              onClick={() => window.open('https://github.com/GitForGood', '_blank')}
+            >
+              <span className="material-symbols-outlined">code</span>
+              GitHub: @GitForGood
+            </Button>
 
-          <div className="bg-surface-container p-6 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2 text-on-surface">Social</h2>
-            <div className="space-y-2 text-on-surface-variant">
-              <p>GitHub: @yourhandle</p>
-              <p>LinkedIn: /in/yourprofile</p>
-              <p>Twitter: @yourhandle</p>
-            </div>
+            <Button
+              variant="outlined"
+              onClick={() => window.open('https://www.linkedin.com/in/oliver-andersson-b86b79178/', '_blank')}
+            >
+              <span className="material-symbols-outlined">work</span>
+              LinkedIn: /in/oliver-andersson
+            </Button>
+
+            <SnackbarProvider>
+            {(state) => (
+              <Button
+                  variant="outlined"
+                  onClick={() => {
+                    navigator.clipboard.writeText('oliverofta@gmail.com')
+                    state.add(
+                      "Copied email to clipboard"
+                    )
+                  }}
+                >
+                  <span className="material-symbols-outlined">mail</span>
+                  Email: oliverofta@gmail.com
+                  <span className="material-symbols-outlined">content_copy</span>
+                </Button>
+            )}
+            </SnackbarProvider>
           </div>
         </div>
       </div>
+      
     </div>
   )
 }
