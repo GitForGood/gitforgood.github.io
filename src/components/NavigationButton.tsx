@@ -19,6 +19,7 @@ export function NavigationButton({ label, icon, isActive, onClick, variant = 'ra
         transition-all duration-200
         hover:bg-surface-container-high
         rounded-lg
+        cursor-pointer
         ${isActive ? 'bg-secondary-container' : 'bg-transparent'}
       `}
     >

@@ -48,7 +48,7 @@ export function Debattnytt() {
           <div className="flex flex-wrap gap-3">
             <Button
               variant="outlined"
-              disabled
+              isDisabled
             >
               Client Project
             </Button>

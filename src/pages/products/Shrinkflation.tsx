@@ -48,7 +48,7 @@ export function Shrinkflation() {
           <div className="flex flex-wrap gap-3">
             <Button
               variant="outlined"
-              disabled
+              isDisabled
             >
               Private Repository
             </Button>

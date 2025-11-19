@@ -5,13 +5,13 @@ export function Projects() {
     {
       title: 'Lazy Prepper',
       description: 'A cross-platform Flutter app for managing home storage of non-perishable food. Track inventory, plan meals with recipe integration, and ensure you\'re prepared for emergencies.',
-      technologies: ['Flutter', 'Dart', 'SQLite', 'Multi-Platform'],
+      technologies: ['Flutter', 'Dart', 'SQLite'],
       slug: 'inventory-manager',
     },
     {
       title: 'Debattnytt',
       description: 'Tinder-like debate platform where users swipe on theses to rate truthfulness. Features real-time analytics and content discovery to make civic engagement approachable.',
-      technologies: ['Meteor.js', 'JavaScript', 'MongoDB', 'Real-time'],
+      technologies: ['Meteor.js', 'JavaScript', 'MongoDB', 'Sass'],
       slug: 'debattnytt',
     },
     {
@@ -23,7 +23,7 @@ export function Projects() {
     {
       title: 'Shrinkflation Tracker',
       description: 'Mobile app with barcode scanning to detect shrinkflation in real-time while shopping. Crowdsourced data helps consumers identify products that have decreased in size.',
-      technologies: ['Flutter', 'Dart', 'Firebase', 'Barcode Scanner'],
+      technologies: ['Flutter', 'Dart', 'Firebase'],
       slug: 'shrinkflation',
     },
   ]
