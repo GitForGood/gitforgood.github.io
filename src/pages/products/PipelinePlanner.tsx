@@ -62,38 +62,22 @@ export function PipelinePlanner() {
         <section className="mb-8">
           <h2 className="text-3xl font-bold mb-4 text-on-surface">What is Pipeline Planner?</h2>
           <p className="text-on-surface-variant mb-4 leading-relaxed">
-            Pipeline Planner is a specialized web-based analysis tool designed for Minecraft's Create mod enthusiasts.
-            The Create mod introduces complex machinery and automation systems, and Pipeline Planner helps players
-            design and optimize their production chains before building them in-game.
+            A load balancer for Minecraft's Create mod that tallies up operations in stations to highlight bottlenecks
+            in production pipelines before building the factory in-game. This is part of a lineage of similar planning
+            tools for factory-building games like Factorio.
           </p>
           <p className="text-on-surface-variant leading-relaxed">
-            Built with modern web technologies, the tool provides an intuitive interface for planning production
-            pipelines, identifying potential bottlenecks, and ensuring efficient resource flow. Whether you're
-            building a simple item sorter or a complex automated factory, Pipeline Planner helps you plan it right
-            the first time.
+            The tool helps players identify production constraints and optimize resource flow by visualizing throughput
+            calculations across machinery stations, preventing costly trial-and-error building.
           </p>
         </section>
 
-        {/* Problem it solves */}
+        {/* How to test */}
         <section className="mb-8">
-          <h2 className="text-3xl font-bold mb-4 text-on-surface">Problem & Solution</h2>
-          <div className="bg-surface-container p-6 rounded-lg mb-4">
-            <h3 className="text-xl font-semibold mb-2 text-on-surface">The Problem</h3>
+          <div className="bg-surface-container-high p-6 rounded-lg border-l-4 border-primary">
+            <h3 className="text-xl font-semibold mb-2 text-on-surface">Testing the Tool</h3>
             <p className="text-on-surface-variant leading-relaxed">
-              In Minecraft's Create mod, production pipelines can become incredibly complex. Players often spend
-              hours building intricate machinery only to discover bottlenecks that halt production or cause resource
-              backups. Identifying these issues requires careful planning and calculations that are difficult to do
-              mentally or on paper. Trial and error in-game is time-consuming and resource-intensive.
-            </p>
-          </div>
-          <div className="bg-surface-container p-6 rounded-lg">
-            <h3 className="text-xl font-semibold mb-2 text-on-surface">The Solution</h3>
-            <p className="text-on-surface-variant leading-relaxed">
-              Pipeline Planner provides a visual, analytical approach to production planning. By modeling your
-              production chains in the tool, you can identify bottlenecks, balance resource flows, and optimize
-              your designs before committing resources in-game. The web-based interface makes it accessible from
-              any device, letting you plan your factory while away from your game or collaborate with others on
-              complex designs.
+              This tool must be hosted locally. To test it, clone the repository and run <code className="bg-surface-container px-2 py-1 rounded text-on-surface">npm run dev</code> in the repository root.
             </p>
           </div>
         </section>
@@ -102,10 +86,6 @@ export function PipelinePlanner() {
         <section className="mb-8">
           <h2 className="text-3xl font-bold mb-4 text-on-surface">Technologies Used</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="bg-surface-container p-4 rounded-lg">
-              <h3 className="font-semibold text-on-surface mb-1">Vue.js</h3>
-              <p className="text-sm text-on-surface-variant">Frontend framework</p>
-            </div>
             <div className="bg-surface-container p-4 rounded-lg">
               <h3 className="font-semibold text-on-surface mb-1">Vite</h3>
               <p className="text-sm text-on-surface-variant">Build tool & dev server</p>
@@ -121,10 +101,6 @@ export function PipelinePlanner() {
             <div className="bg-surface-container p-4 rounded-lg">
               <h3 className="font-semibold text-on-surface mb-1">PostCSS</h3>
               <p className="text-sm text-on-surface-variant">CSS processing</p>
-            </div>
-            <div className="bg-surface-container p-4 rounded-lg">
-              <h3 className="font-semibold text-on-surface mb-1">ESLint</h3>
-              <p className="text-sm text-on-surface-variant">Code quality tools</p>
             </div>
           </div>
         </section>

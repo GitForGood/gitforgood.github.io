@@ -17,7 +17,7 @@ export function Projects() {
     {
       title: 'Pipeline Planner',
       description: 'Web-based analysis tool for Minecraft Create mod production pipelines. Identify bottlenecks and optimize your automated factories before building them in-game.',
-      technologies: ['Vue.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
+      technologies: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
       slug: 'pipeline-planner',
     },
     {

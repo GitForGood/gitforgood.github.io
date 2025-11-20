@@ -17,8 +17,8 @@ interface ImageCarouselProps {
   alwaysSingleImage?: boolean
 }
 
-export function ImageCarousel({ images, itemsPerSlide = { mobile: 1, desktop: 2 }, alwaysSingleImage = false }: ImageCarouselProps) {
-  const { mobile = 1, desktop = 2 } = itemsPerSlide
+export function ImageCarousel({ images, alwaysSingleImage = false }: ImageCarouselProps) {
+  const itemsPerSlide = 2;
   const [carouselHeight, setCarouselHeight] = useState<number>(600)
   const [imageAspectRatio, setImageAspectRatio] = useState<number>(1)
 
@@ -30,7 +30,7 @@ export function ImageCarousel({ images, itemsPerSlide = { mobile: 1, desktop: 2 
     }
     return grouped
   }
-  const desktopGroups = groupImages(desktop)
+  const desktopGroups = groupImages(itemsPerSlide)
 
   // Load first image to get its aspect ratio
   useEffect(() => {
@@ -146,7 +146,7 @@ export function ImageCarousel({ images, itemsPerSlide = { mobile: 1, desktop: 2 
                     {image.src ? (
                       <img
                         src={image.src}
-                        alt={image.alt || `Screenshot ${groupIndex * desktop + imageIndex + 1}`}
+                        alt={image.alt || `Screenshot ${groupIndex * itemsPerSlide + imageIndex + 1}`}
                         className="w-[80%] h-auto rounded-lg shadow-lg max-h-full object-contain"
                       />
                     ) : (
