@@ -10,7 +10,7 @@ export function Projects() {
     },
     {
       title: 'Debattnytt',
-      description: 'Tinder-like debate platform where users swipe on theses to rate truthfulness. Features real-time analytics and content discovery to make civic engagement approachable.',
+      description: 'A site for hosting asynchronous online debates, for this I created a Tinder-like debate platform where users swipe on theses to rate truthfulness. Features real-time analytics and content discovery to make civic engagement approachable.',
       technologies: ['Meteor.js', 'JavaScript', 'MongoDB', 'Sass'],
       slug: 'debattnytt',
     },

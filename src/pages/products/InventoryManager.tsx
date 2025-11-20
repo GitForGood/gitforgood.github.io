@@ -5,22 +5,43 @@ import { ImageCarousel } from '../../components/ImageCarousel'
 export function InventoryManager() {
   const navigate = useNavigate()
 
+  const scrollToContent = () => {
+    const contentSection = document.getElementById('content')
+    contentSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const images = [
     {
-      placeholder: '[App Screenshot - Main Dashboard]',
-      suggestion: 'Screenshot showing the inventory list with items, categories, and quick actions'
+      src: '/portfolio/images/lazy-prepper/storage-summary.png',
+      alt: 'Storage Summary - Overview of inventory with storage locations and categories'
     },
     {
-      placeholder: '[App Screenshot - Recipe Integration]',
-      suggestion: 'Screenshot showing the recipe feature with ingredient tracking'
+      src: '/portfolio/images/lazy-prepper/add-item.png',
+      alt: 'Add Item - Interface for adding new items to inventory'
     },
     {
-      placeholder: '[App Screenshot - Add Item Interface]',
-      suggestion: 'Screenshot showing the form for adding new items with category selection and expiration dates'
+      src: '/portfolio/images/lazy-prepper/quotas.png',
+      alt: 'Quotas - Track storage quotas for different item categories'
     },
     {
-      placeholder: '[App Screenshot - Multi-Platform View]',
-      suggestion: 'Screenshot showing the app running on different platforms (mobile, desktop, web)'
+      src: '/portfolio/images/lazy-prepper/quota-suggestions.png',
+      alt: 'Quota Suggestions - Smart suggestions for maintaining optimal inventory levels'
+    },
+    {
+      src: '/portfolio/images/lazy-prepper/lazy-prep-recipes.png',
+      alt: 'Lazy Prep Recipes - Browse recipes based on available inventory'
+    },
+    {
+      src: '/portfolio/images/lazy-prepper/lazy-prep-recipe.png',
+      alt: 'Recipe Details - View recipe details with ingredient requirements'
+    },
+    {
+      src: '/portfolio/images/lazy-prepper/calorie-target.png',
+      alt: 'Calorie Target - Set and monitor daily calorie targets'
+    },
+    {
+      src: '/portfolio/images/lazy-prepper/refill-forecast.png',
+      alt: 'Refill Forecast - Predict when items need to be restocked'
     }
   ]
 
@@ -58,6 +79,14 @@ export function InventoryManager() {
             >
               View on GitHub
             </Button>
+            <Button
+            variant="outlined"
+            onClick={scrollToContent}
+            className="flex items-center gap-2"
+          >
+            <span>Learn More</span>
+            <span className="material-symbols-outlined">keyboard_arrow_down</span>
+          </Button>
           </div>
         </div>
 
@@ -65,18 +94,14 @@ export function InventoryManager() {
         <ImageCarousel images={images} />
 
         {/* What is it */}
-        <section className="mb-8">
+        <section id="content" className="mb-8">
           <h2 className="text-3xl font-bold mb-4 text-on-surface">What is Lazy Prepper?</h2>
           <p className="text-on-surface-variant mb-4 leading-relaxed">
-            Lazy Prepper is a comprehensive cross-platform application built with Flutter that helps households
-            track and manage their non-perishable food storage. Whether you're preparing for emergencies,
-            managing a large pantry, or simply trying to reduce food waste, Lazy Prepper provides an intuitive
-            interface to keep track of what you have and what you need.
+            Lazy Prepper is an adroid application built with Flutter that helps households track and manage their non-perishable food storage. 
+            It aims to keep the food as fresh as possible in the event one has to rely on it for sustinance in a time of crisis. It aims to help users sustainably keep a large stock of food at home by preventing the event of being overwhelmed by waves of expiring food that has to be eaten in short intervals. Lazy Prepper provides an intuitive interface to keep track of what you have and helps you eat what you need.
           </p>
           <p className="text-on-surface-variant leading-relaxed">
-            The app features recipe integration, allowing you to plan meals based on your current inventory
-            and automatically track which items are being used. Available on iOS, Android, Web, Windows, macOS,
-            and Linux, Lazy Prepper ensures your inventory is accessible wherever you need it.
+            Lazy Prepper schedules consumption quotas based on the user's inventory and preference of use-frequency that suits their preferred way of planning their meals. It uses tags on foods to recommend recipes that makes use of the scheduled ingredients. It provides a simple interface for creating and following recipes in the app and ships with a curated set of pre-installed recipes.
           </p>
         </section>
 
@@ -86,43 +111,34 @@ export function InventoryManager() {
           <div className="bg-surface-container p-6 rounded-lg mb-4">
             <h3 className="text-xl font-semibold mb-2 text-on-surface">The Problem</h3>
             <p className="text-on-surface-variant leading-relaxed">
-              Managing a home storage of non-perishable goods is challenging without a systematic approach.
-              People often lose track of what they have, leading to duplicate purchases, expired items, and
-              wasted money. During times of crisis or supply chain disruptions, knowing exactly what resources
-              you have available becomes even more critical.
+              Managing a home storage of non-perishable goods is challenging without a systematic approach. As the expiration date is often so far in the future, many face the problem of forgetting to eat from their inventory in a pace that prevents having to soley eat beans for a week or risk having to throw them all out at once. When sudden changes in inventory happens, such as throwing out a batch of food, gifting it, or purchasing new - the previously decided plan has to be redone in order to take into account this update. Having to do this manually is tedius at best, and a spreadsheet does not provide the cleanest interface.
+              And this takes away from the user's intended vision: 
+              
+              <p>
+                <b>
+                Having enough fresh food at home to last a desired amount of time for themselves and their loved ones.
+                </b>
+              </p>
             </p>
           </div>
           <div className="bg-surface-container p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-2 text-on-surface">The Solution</h3>
             <p className="text-on-surface-variant leading-relaxed">
               Lazy Prepper eliminates manual tracking by providing a digital inventory system that's always
-              in your pocket or on your desktop. The recipe integration feature helps you cycle through your
-              storage systematically, ensuring items are used before expiration. Multi-platform support means
-              you can check your inventory while shopping or update it while cooking, making household
-              management effortless.
+              in your pocket. It does the calculation of what you have to eat and automatically adjusts when changes happen to your inventory. The recipe integration feature helps you cycle through your
+              storage systematically easing the burden of actually doing the maintenance work of eating through your food, ensuring items are used before expiration and are as fresh as possible when it matters. To further the goal of being a helping hand in a time of crisis, none of the critical functionality relies on internet connection.
             </p>
           </div>
         </section>
-
-        {/* Technologies */}
-        <section className="mb-8">
-          <h2 className="text-3xl font-bold mb-4 text-on-surface">Technologies Used</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="bg-surface-container-lowest p-4 rounded-lg">
-              <h3 className="font-semibold text-on-surface mb-1">Flutter</h3>
-              <p className="text-sm text-on-surface-variant">Cross-platform framework</p>
-            </div>
-            <div className="bg-surface-container-lowest p-4 rounded-lg">
-              <h3 className="font-semibold text-on-surface mb-1">Dart</h3>
-              <p className="text-sm text-on-surface-variant">Primary language (91.1%)</p>
-            </div>
-            <div className="bg-surface-container-lowest p-4 rounded-lg">
-              <h3 className="font-semibold text-on-surface mb-1">SQLite</h3>
-              <p className="text-sm text-on-surface-variant">Local data storage</p>
-            </div>
-          </div>
+        <section className='mb-8'>
+          {/* Intended user */}
+          <h2 className='text-on-surface text-3xl font-bold mb-4'>
+            Who are you?
+          </h2>
+          <p className='text-on-surface'>
+            You are someone that is tasked with keeping food at home in the event of a crisis and would like to spend as little time as possible worrying about the food after buying it.
+          </p>
         </section>
-
 
         {/* Key Features */}
         <section className="mb-8">
@@ -150,6 +166,29 @@ export function InventoryManager() {
               </div>
             </li>
           </ul>
+        </section>
+
+        {/* Technologies */}
+        <section className="mb-8">
+          <h2 className="text-3xl font-bold mb-4 text-on-surface">Technologies Used</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="bg-surface-container-lowest p-4 rounded-lg">
+              <h3 className="font-semibold text-on-surface mb-1">Flutter</h3>
+              <p className="text-sm text-on-surface-variant">Front-end framework</p>
+            </div>
+            <div className="bg-surface-container-lowest p-4 rounded-lg">
+              <h3 className="font-semibold text-on-surface mb-1">Material Design</h3>
+              <p className="text-sm text-on-surface-variant">Design system</p>
+            </div>
+            <div className="bg-surface-container-lowest p-4 rounded-lg">
+              <h3 className="font-semibold text-on-surface mb-1">Dart</h3>
+              <p className="text-sm text-on-surface-variant">Primary language (91.1%)</p>
+            </div>
+            <div className="bg-surface-container-lowest p-4 rounded-lg">
+              <h3 className="font-semibold text-on-surface mb-1">SQLite</h3>
+              <p className="text-sm text-on-surface-variant">Local data storage</p>
+            </div>
+          </div>
         </section>
 
         {/* Project Status */}

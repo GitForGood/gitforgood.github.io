@@ -42,7 +42,7 @@ export function Debattnytt() {
             Debattnytt
           </h1>
           <p className="text-xl text-on-surface-variant mb-6">
-            Tinder-Like Debate Platform for Crowdsourced Truth Assessment
+            Social media platform for crowdsourced truth assessment
           </p>
 
           <div className="flex flex-wrap gap-3">
