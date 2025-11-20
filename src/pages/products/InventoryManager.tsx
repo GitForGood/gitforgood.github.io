@@ -12,36 +12,36 @@ export function InventoryManager() {
 
   const images = [
     {
-      src: '/portfolio/images/lazy-prepper/storage-summary.png',
+      src: '/images/lazy-prepper/storage-summary.png',
       alt: 'Storage Summary - Overview of inventory with storage locations and categories'
     },
     {
-      src: '/portfolio/images/lazy-prepper/add-item.png',
+      src: '/images/lazy-prepper/add-item.png',
       alt: 'Add Item - Interface for adding new items to inventory'
     },
     {
-      src: '/portfolio/images/lazy-prepper/quotas.png',
+      src: '/images/lazy-prepper/quotas.png',
       alt: 'Quotas - Track storage quotas for different item categories'
     },
     {
-      src: '/portfolio/images/lazy-prepper/quota-suggestions.png',
+      src: '/images/lazy-prepper/quota-suggestions.png',
       alt: 'Quota Suggestions - Smart suggestions for maintaining optimal inventory levels'
     },
     {
-      src: '/portfolio/images/lazy-prepper/lazy-prep-recipes.png',
+      src: '/images/lazy-prepper/lazy-prep-recipes.png',
       alt: 'Lazy Prep Recipes - Browse recipes based on available inventory'
     },
     {
-      src: '/portfolio/images/lazy-prepper/lazy-prep-recipe.png',
+      src: '/images/lazy-prepper/lazy-prep-recipe.png',
       alt: 'Recipe Details - View recipe details with ingredient requirements'
     },
     {
-      src: '/portfolio/images/lazy-prepper/calorie-target.png',
+      src: '/images/lazy-prepper/calorie-target.png',
       alt: 'Calorie Target - Set and monitor daily calorie targets'
     },
     {
-      src: '/portfolio/images/lazy-prepper/refill-forecast.png',
-      alt: 'Refill Forecast - Predict when items need to be restocked'
+      src: '/images/lazy-prepper/refill-forecast.png',
+      alt: 'Refill Forecast - Predict the impact of adding food to inventory'
     }
   ]
 
