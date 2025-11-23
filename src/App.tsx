@@ -83,7 +83,7 @@ function AppContent() {
       </div>
       <div className="flex flex-1 overflow-hidden order-2">
         {/* Desktop Side Navigation Rail - hidden on mobile */}
-        <nav className="hidden sm:flex h-full bg-surface-container border-r border-outline-variant flex-col py-4 gap-2" aria-label="Main navigation">
+        <nav className="hidden sm:flex h-full bg-surface-container border-r border-outline-variant flex-col py-4 gap-2 overflow-y-auto" aria-label="Main navigation">
           {navigation_items.map((item, index) => (
             <NavigationButton
               key={item.path}
