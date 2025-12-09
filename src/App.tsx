@@ -12,6 +12,7 @@ import { InventoryManager } from './pages/products/InventoryManager'
 import { PipelinePlanner } from './pages/products/PipelinePlanner'
 import { Shrinkflation } from './pages/products/Shrinkflation'
 import { Debattnytt } from './pages/products/Debattnytt'
+import { Terapiverkstaden } from './pages/products/Terapiverkstaden'
 
 const navigation_items = [
   {
@@ -102,6 +103,7 @@ function AppContent() {
             <Route path="/projects/debattnytt" element={<Debattnytt />} />
             <Route path="/projects/pipeline-planner" element={<PipelinePlanner />} />
             <Route path="/projects/shrinkflation" element={<Shrinkflation />} />
+            <Route path="/projects/terapiverkstaden" element={<Terapiverkstaden />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

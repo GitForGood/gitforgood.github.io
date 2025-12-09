@@ -15,6 +15,12 @@ export function Projects() {
       slug: 'debattnytt',
     },
     {
+      title: 'Terapiverkstaden',
+      description: 'A professional website for a Swedish psychotherapy practice offering therapy, supervision, and education services. Built with Vue 3 and TypeScript for optimal performance and maintainability.',
+      technologies: ['Vue 3', 'TypeScript', 'Vue Router', 'Vite'],
+      slug: 'terapiverkstaden',
+    },
+    {
       title: 'Pipeline Planner',
       description: 'Web-based analysis tool for Minecraft Create mod production pipelines. Identify bottlenecks and optimize your automated factories before building them in-game.',
       technologies: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
